@@ -1,7 +1,6 @@
 package com.soccer.model;
 
 
-
 public class Soccer {
 
     private int id;
@@ -9,17 +8,27 @@ public class Soccer {
     private String birthDay;
     private int experience;
     private String position;
+    private String picture;
 
     public Soccer() {
 
     }
 
-    public Soccer(int id, String name, String birthDay, int experience, String position) {
+    public Soccer(int id, String name, String birthDay, int experience, String position, String picture) {
         this.id = id;
         this.name = name;
         this.birthDay = birthDay;
         this.experience = experience;
         this.position = position;
+        this.picture = picture;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public int getId() {

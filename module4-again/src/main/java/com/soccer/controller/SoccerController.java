@@ -2,7 +2,7 @@ package com.soccer.controller;
 
 import com.soccer.model.Soccer;
 import com.soccer.service.ISoccerService;
-import com.soccer.service.impl.SoccerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +14,23 @@ import java.util.List;
 @Controller
 @RequestMapping("/soccer")
 public class SoccerController {
-    private final ISoccerService iSoccerService = new SoccerService();
-@GetMapping("/list")
-public String toIndex(Model model) {
-    List<Soccer> soccerList = iSoccerService.getSoccerList();
-    model.addAttribute("soccerList", soccerList);
-    return "soccer/list";
-}
+
+    @Autowired
+    private ISoccerService iSoccerService;
+
+    @GetMapping("/list")
+    public String toIndex(Model model) {
+//        List<Soccer> soccerList = iSoccerService.getSoccerList();
+        model.addAttribute("soccerList", iSoccerService.getSoccerList());
+        return "/soccer/list";
+    }
 
     @GetMapping("/showAddNewForm")
     public String showAddNewForm(Model model) {
         model.addAttribute("newSoccer", new Soccer());
         return "/soccer/create";
     }
+
     @PostMapping("/addNewSoccer")
     public String addNewSoccer(@ModelAttribute Soccer newSoccer, RedirectAttributes redirectAttributes) {
         String mess = "Add new soccer failed!";
@@ -38,14 +42,16 @@ public String toIndex(Model model) {
         redirectAttributes.addFlashAttribute("mess", mess);
         return "redirect:/soccer/list";
     }
-    @GetMapping( "/showUpdateForm")
+
+    @GetMapping("/showUpdateForm")
     public String showUpdateForm(Model model, @RequestParam int idFind) {
         Soccer soccerUpdate = iSoccerService.findById(idFind);
 
         model.addAttribute("soccerUpdate", soccerUpdate);
 
-        return "/soccer/edit";
+        return "edit";
     }
+
     @PostMapping("/editSoccer")
     public String editSoccer(@ModelAttribute Soccer soccerUpdate, RedirectAttributes redirectAttributes) {
         String mess = null;
@@ -57,6 +63,7 @@ public String toIndex(Model model) {
         redirectAttributes.addFlashAttribute("mess", mess);
         return "redirect:/soccer/list";
     }
+
     @PostMapping("/deleteSoccer")
     public String deleteSoccer(@RequestParam int idDelete, RedirectAttributes redirectAttributes) {
 
@@ -65,7 +72,8 @@ public String toIndex(Model model) {
         redirectAttributes.addFlashAttribute("mess", "Delete soccer successfully!");
         return "redirect:/soccer/list";
     }
-    @GetMapping( "/viewSoccer")
+
+    @GetMapping("/viewSoccer")
     public String viewSoccer(@RequestParam int idView, Model model) {
         Soccer soccerView = iSoccerService.findById(idView);
 
@@ -77,6 +85,7 @@ public String toIndex(Model model) {
 
         return "/soccer/list";
     }
+
     @GetMapping("/searchByName")
     public String searchByName(@RequestParam String soccerNameSearch, Model model) {
         String mess = "Found!";
@@ -89,7 +98,7 @@ public String toIndex(Model model) {
 
         model.addAttribute("soccerList", soccerFound);
         model.addAttribute("mess", mess);
-
+        model.addAttribute("soccerNameSearch", soccerNameSearch);
         return "/soccer/list";
     }
 
