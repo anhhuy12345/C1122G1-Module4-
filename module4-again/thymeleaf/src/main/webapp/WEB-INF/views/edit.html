@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>Edit Player</h3>
+
+<a th:href="@{/soccer}">Back to player list</a>
+
+<form action="/update" method="post" th:object="${soccer}">
+    <table>
+        <tr>
+            <td><input type="hidden" th:field="*{id}"/></td>
+        </tr>
+
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+
+        <tr>
+            <td>Birthday</td>
+            <td><input type="text" th:field="*{birthDay}"/></td>
+        </tr>
+
+        <tr>
+            <td>Experience</td>
+            <td><input type="text" th:field="*{experience}"/></td>
+        </tr>
+
+        <tr>
+            <td>Position</td>
+            <td><input type="text" th:field="*{position}"/></td>
+        </tr>
+    </table>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

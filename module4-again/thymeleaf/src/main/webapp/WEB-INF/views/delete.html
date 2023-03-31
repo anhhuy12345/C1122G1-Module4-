@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>Delete Player</h3>
+
+<a th:href="@{/soccer}">Back to player list</a>
+
+<form action="/delete" method="post" th:object="${soccer}">
+    <table>
+        <tr>
+            <td>Id</td>
+            <td><input type="number" th:field="*{id}" readonly/></td>
+        </tr>
+
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}" readonly/></td>
+        </tr>
+
+        <tr>
+            <td>BirthDay</td>
+            <td><input type="text" th:field="*{birthDay}" readonly/></td>
+        </tr>
+
+        <tr>
+            <td>Experience</td>
+            <td><input type="text" th:field="*{experience}" readonly/></td>
+        </tr>
+
+        <tr>
+            <td>Position</td>
+            <td><input type="text" th:field="*{position}" readonly/></td>
+        </tr>
+    </table>
+
+    <button type="submit">Delete</button>
+</form>
+</body>
+</html>

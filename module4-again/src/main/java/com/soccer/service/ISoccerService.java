@@ -7,7 +7,7 @@ import java.util.List;
 public interface ISoccerService {
     List<Soccer> getSoccerList();
 
-    boolean add(Soccer soccer);
+    void add(Soccer soccer);
 
     Soccer findById(int id);
 

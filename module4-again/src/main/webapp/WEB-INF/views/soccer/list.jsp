@@ -27,7 +27,7 @@
         </form>
     </div>
     <div>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='http://localhost:8080/soccer/showAddNewForm'">
+        <button type="button" class="btn btn-primary" onclick="window.location.href='http://localhost:8080/soccer/create'">
             Add new FootballPlayer
         </button>
     </div>

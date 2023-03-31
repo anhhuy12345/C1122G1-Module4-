@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>Edit Player</h3>
+
+<a th:href="@{/soccer}">Back to player list</a>
+
+<table th:object="${soccer}">
+    <tr>
+        <td>Id: </td>
+        <td th:text="${soccer.id}"></td>
+    </tr>
+
+    <tr>
+        <td>Name: </td>
+        <td th:text="${soccer.name}"></td>
+    </tr>
+
+    <tr>
+        <td>Birthday: </td>
+        <td th:text="${soccer.birthDay}"></td>
+    </tr>
+
+    <tr>
+        <td>Experience: </td>
+        <td th:text="${soccer.experience}"></td>
+    </tr>
+
+    <tr>
+        <td>Position: </td>
+        <td th:text="${soccer.position}"></td>
+</table>
+</body>
+</html>

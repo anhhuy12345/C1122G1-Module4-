@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,9 +22,7 @@ public class SoccerService implements ISoccerService {
     }
 
     @Override
-    public boolean add(Soccer soccer) {
-        iSoccerRepository.add(soccer);
-        return true;
+    public void add(Soccer soccer) {
     }
 
     @Override

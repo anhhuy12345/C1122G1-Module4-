@@ -32,9 +32,8 @@ public class SoccerRepository implements ISoccerRepository {
     }
 
     @Override
-    public boolean add(Soccer soccer) {
-        soccerList.add(soccer);
-        return true;
+    public void add(Soccer soccer) {
+
     }
 
     @Override

@@ -12,7 +12,8 @@
     }
 </style>
 <body>
-<form:form action="/soccer/addNewSoccer" method="post" modelAttribute="newSoccer">
+
+<form:form action="/soccer/create" method="post" modelAttribute="newPlayer">
     <div class="form-group">
         <label for="name"></label>
         <form:input type="text" clss="form-control" form="name" id="name" aria-describedby="helpId" placeholder="Please Enter Name" path="name"/>

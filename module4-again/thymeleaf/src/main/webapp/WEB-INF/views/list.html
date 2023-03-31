@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Soccer List</title>
+</head>
+<body>
+
+<marquee style="font-weight: bolder" >Player List</marquee>
+
+<a th:href="@{/create}">Add new player</a>
+
+<form action="/search" method="get">
+    <input type="text" name="name">
+    <button type="submit">Search</button>
+</form>
+
+<p style="color: green" th:text="${mess}"></p>
+
+<table style="color: black ; background: cadetblue ; font-size: 50px" border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>BirthDay</th>
+        <th>Experience</th>
+        <th>Position</th>
+        <th>Picture</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+
+    <tr th:each="soccer : ${soccers}">
+        <td th:text="${soccer.id}"></td>
+        <td th:text="${soccer.name}"></td>
+        <td th:text="${soccer.birthDay}"></td>
+        <td th:text="${soccer.experience}"></td>
+        <td th:text="${soccer.position}"></td>
+        <td><a th:href="@{/edit/__${soccer.id}__}">edit</a></td>
+        <td><a th:href="@{/delete/__${soccer.id}__}">delete</a></td>
+        <td><a th:href="@{/view/__${soccer.id}__}">view</a></td>
+    </tr>
+</table>
+</body>
+</html>

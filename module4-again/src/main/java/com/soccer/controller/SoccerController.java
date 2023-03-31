@@ -5,6 +5,7 @@ import com.soccer.service.ISoccerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -25,21 +26,12 @@ public class SoccerController {
         return "/soccer/list";
     }
 
-    @GetMapping("/showAddNewForm")
-    public String showAddNewForm(Model model) {
-        model.addAttribute("newSoccer", new Soccer());
-        return "/soccer/create";
-    }
 
-    @PostMapping("/addNewSoccer")
-    public String addNewSoccer(@ModelAttribute Soccer newSoccer, RedirectAttributes redirectAttributes) {
-        String mess = "Add new soccer failed!";
-
-        if (iSoccerService.add(newSoccer)) {
-            mess = "Adding new soccer Succesfully!";
-        }
-
-        redirectAttributes.addFlashAttribute("mess", mess);
+    @PostMapping("/create")
+    public String addNewSoccer(@ModelAttribute("newPlayer") Soccer soccer,
+                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        iSoccerService.add(soccer);
+        redirectAttributes.addFlashAttribute("message", "Player created successfully");
         return "redirect:/soccer/list";
     }
 

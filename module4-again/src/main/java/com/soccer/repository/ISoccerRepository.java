@@ -8,7 +8,7 @@ public interface ISoccerRepository {
 
     List<Soccer> getSoccerList();
 
-    boolean add(Soccer soccer);
+    void add(Soccer soccer);
 
     Soccer findById(int id);
 
